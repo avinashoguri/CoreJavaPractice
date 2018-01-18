@@ -1,5 +1,7 @@
 package core.java.regex;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -109,5 +111,20 @@ public class RegexPractice {
 				}
 			}
 		}
+	}
+
+	/**
+	 * Get all words in { and }
+	 */
+	@Test
+	public void readPlaceHoldersInAString() {
+		String str = "Hello {world}. welcome to {java} {regex}";
+		Pattern pattern = Pattern.compile("\\{\\w+\\}");
+		Matcher matcher = pattern.matcher(str);
+		List<String> placeHolders = new ArrayList<>();
+		while (matcher.find()) {
+			placeHolders.add(matcher.group());
+		}
+		System.out.println(placeHolders);
 	}
 }

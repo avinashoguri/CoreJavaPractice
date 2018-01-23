@@ -51,6 +51,12 @@
 **core.java.regex**
 - RegexPractice
 
+**core.java.i18n**
+- DecimalFormatPractice
+- LocalePractice
+- NumberFormatPractice
+- ResourceBundlePractice
+
 ## Java 8 Examples
 
 **core.java.java8.base64**

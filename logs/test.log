@@ -1,0 +1,4 @@
+2018-01-25 DEBUG Log4JPractice:12 - debug message
+2018-01-25 ERROR Log4JPractice:17 - error message
+2018-01-25 INFO  MethodHandlesPractice:14 - info message
+2018-01-25 DEBUG MethodHandlesPractice:19 - debug message

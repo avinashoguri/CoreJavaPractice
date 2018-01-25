@@ -57,6 +57,14 @@
 - NumberFormatPractice
 - ResourceBundlePractice
 
+**core.java.log4j**
+- Log4JPractice
+- MethodHandlesPractice
+
+**core.java.util.logging**
+- UtilLoggingPractice
+- MethodHandlesPractice
+
 ## Java 8 Examples
 
 **core.java.java8.base64**

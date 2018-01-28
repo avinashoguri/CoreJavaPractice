@@ -16,4 +16,14 @@ public class Log4JPractice {
 	public void errorLogMessage() {
 		LOGGER.error("error message");
 	}
+
+	@Test
+	public void logException() {
+		try {
+			int result = 10 / 0;
+			System.out.println(result);
+		} catch (Exception e) {
+			LOGGER.error("Exception in divide", e);
+		}
+	}
 }

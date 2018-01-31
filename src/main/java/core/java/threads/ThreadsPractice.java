@@ -283,8 +283,8 @@ public class ThreadsPractice {
 		LocalTime endTime = LocalTime.now(Clock.systemDefaultZone());
 
 		System.out.println("duration: " + Duration.between(startTime, endTime).getSeconds());
-		System.out.println("list1.size(): " + synchronizedMethodProblem.getList1().size()
-				+ ", list2.size(): " + synchronizedMethodProblem.getList2().size());
+		System.out.println("list1.size(): " + synchronizedMethodProblem.getList1().size() + ", list2.size(): "
+				+ synchronizedMethodProblem.getList2().size());
 	}
 
 	/**
@@ -308,8 +308,8 @@ public class ThreadsPractice {
 		LocalTime endTime = LocalTime.now(Clock.systemDefaultZone());
 
 		System.out.println("duration: " + Duration.between(startTime, endTime).getSeconds());
-		System.out.println("list1.size(): " + synchronizedMethodProblem.getList1().size()
-				+ ", list2.size(): " + synchronizedMethodProblem.getList2().size());
+		System.out.println("list1.size(): " + synchronizedMethodProblem.getList1().size() + ", list2.size(): "
+				+ synchronizedMethodProblem.getList2().size());
 	}
 
 	/**
@@ -333,8 +333,8 @@ public class ThreadsPractice {
 		LocalTime endTime = LocalTime.now(Clock.systemDefaultZone());
 
 		System.out.println("duration: " + Duration.between(startTime, endTime).getSeconds());
-		System.out.println("list1.size(): " + synchronizedMethodProblem.getList1().size()
-				+ ", list2.size(): " + synchronizedMethodProblem.getList2().size());
+		System.out.println("list1.size(): " + synchronizedMethodProblem.getList1().size() + ", list2.size(): "
+				+ synchronizedMethodProblem.getList2().size());
 	}
 
 	/**
@@ -405,7 +405,6 @@ public class ThreadsPractice {
 	 * Thread pools practice using @see  java.util.concurrent.ExecutorService
 	 * @throws InterruptedException
 	 */
-	@Ignore
 	@Test
 	public void threadPools() throws InterruptedException {
 		// create thread pool with 2 threads

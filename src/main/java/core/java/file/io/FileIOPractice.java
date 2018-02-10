@@ -110,8 +110,7 @@ public class FileIOPractice {
 
 		URL url = FileIOPractice.class.getClassLoader().getResource("file1.txt");
 		File file = new File(url.getPath());
-		System.out.println("readFileWithRelativePathFromStaticMethod() -> file.getAbsolutePath(): "
-				+ file.getAbsolutePath());
+		System.out.println("readFileWithRelativePathFromStaticMethod() -> file.getAbsolutePath(): " + file.getAbsolutePath());
 
 		System.out.println("-----------------method 1 - reading content--------------------------");
 		try (BufferedReader bufferedReader = new BufferedReader(new FileReader(file));) {
@@ -151,8 +150,7 @@ public class FileIOPractice {
 
 		// from java 7 
 		try (InputStream inputStream3 = getClass().getClassLoader().getResourceAsStream("file1.txt")) {
-			System.out.println(
-					"inputStream3: " + inputStream3 + ", number of bytes:" + inputStream3.available());
+			System.out.println("inputStream3: " + inputStream3 + ", number of bytes:" + inputStream3.available());
 		}
 	}
 
@@ -163,8 +161,7 @@ public class FileIOPractice {
 	 */
 	@Test
 	public void readContentsOfFile() throws FileNotFoundException, IOException {
-		System.out.println(
-				"-------------method 1 using java.io.BufferedReader with relative path--------------------------");
+		System.out.println("-------------method 1 using java.io.BufferedReader with relative path--------------------------");
 		URL url = getClass().getClassLoader().getResource("file1.txt");
 		File file = new File(url.getPath());
 		System.out.println("readContentsOfFile() -> file.getAbsolutePath(): " + file.getAbsolutePath());
@@ -175,18 +172,16 @@ public class FileIOPractice {
 			}
 		}
 
-		System.out.println(
-				"----------------method 2 java.io.BufferedReader with absolute path-----------------------");
-		try (BufferedReader bufferedReader = new BufferedReader(new FileReader(
-				"E:\\Backup\\JavaPrep\\practiceProjects\\CoreJavaPractice\\src\\main\\resources\\file1.txt"))) {
+		System.out.println("----------------method 2 java.io.BufferedReader with absolute path-----------------------");
+		try (BufferedReader bufferedReader = new BufferedReader(
+				new FileReader("E:\\Backup\\JavaPrep\\practiceProjects\\CoreJavaPractice\\src\\main\\resources\\file1.txt"))) {
 			String line = "";
 			while ((line = bufferedReader.readLine()) != null) {
 				System.out.println(line);
 			}
 		}
 
-		System.out
-				.println("-----------------method 3 read file using java.util.Scanner----------------------");
+		System.out.println("-----------------method 3 read file using java.util.Scanner----------------------");
 		URL url2 = getClass().getClassLoader().getResource("file1.txt");
 		File file2 = new File(url2.getPath());
 		System.out.println("readContentsOfFile() -> file2.getAbsolutePath(): " + file2.getAbsolutePath());
@@ -299,8 +294,7 @@ public class FileIOPractice {
 	@Ignore
 	@Test
 	public void createFile() throws IOException {
-		File file1 = new File(
-				"E:\\Backup\\JavaPrep\\practiceProjects\\CoreJavaPractice\\src\\main\\resources\\new-file.txt");
+		File file1 = new File("E:\\Backup\\JavaPrep\\practiceProjects\\CoreJavaPractice\\src\\main\\resources\\new-file.txt");
 		boolean isFile1Created = file1.createNewFile();
 		System.out.println("isFile1Created: " + isFile1Created);
 		System.out.println("FileIOPractice -> createFile() -> writing file1 using BufferedWriter");
@@ -308,8 +302,7 @@ public class FileIOPractice {
 			bufferedWriter.write("Hello new-file.txt");
 		}
 
-		File file2 = new File(
-				"E:\\Backup\\JavaPrep\\practiceProjects\\CoreJavaPractice\\src\\main\\resources\\new-file2.txt");
+		File file2 = new File("E:\\Backup\\JavaPrep\\practiceProjects\\CoreJavaPractice\\src\\main\\resources\\new-file2.txt");
 		boolean isFile2Created = file2.createNewFile();
 		System.out.println("isFile2Created: " + isFile2Created);
 		System.out.println("FileIOPractice -> createFile() -> writing file2 using OutputStream");
@@ -348,8 +341,7 @@ public class FileIOPractice {
 			// getting specific file in zip file
 			ZipEntry file1Entry = zipFile.getEntry("my-zip-file/file1.txt");
 			InputStream file1InputStream = zipFile.getInputStream(file1Entry);
-			try (BufferedReader bufferedReader = new BufferedReader(
-					new InputStreamReader(file1InputStream));) {
+			try (BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(file1InputStream));) {
 				StringBuffer content = new StringBuffer();
 				String line;
 				while ((line = bufferedReader.readLine()) != null) {
@@ -363,8 +355,7 @@ public class FileIOPractice {
 			// getting specific file in sub-folder in zip file
 			ZipEntry file4Entry = zipFile.getEntry("my-zip-file/sub-folder/file4.txt");
 			InputStream file4InputStream = zipFile.getInputStream(file4Entry);
-			try (BufferedReader bufferedReader = new BufferedReader(
-					new InputStreamReader(file4InputStream));) {
+			try (BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(file4InputStream));) {
 				StringBuffer content = new StringBuffer();
 				String line;
 				while ((line = bufferedReader.readLine()) != null) {
@@ -438,8 +429,7 @@ public class FileIOPractice {
 		// create zip file
 		byte[] buffer = new byte[1024];
 
-		try (FileOutputStream fos = new FileOutputStream(outputZipFile);
-				ZipOutputStream zos = new ZipOutputStream(fos);) {
+		try (FileOutputStream fos = new FileOutputStream(outputZipFile); ZipOutputStream zos = new ZipOutputStream(fos);) {
 			for (String file : sourceFileNamesList) {
 
 				// to read file using class loader that file should be in class path else we need to complete path of file and create input stream
@@ -472,29 +462,23 @@ public class FileIOPractice {
 	public void getCurrentProjectDirectory() {
 		// method 1
 		String projectDirectory1 = System.getProperty("user.dir");
-		System.out.println(
-				"FileIOPractice -> getCurrentDirectory() -> projectDirectory1: " + projectDirectory1);
+		System.out.println("FileIOPractice -> getCurrentDirectory() -> projectDirectory1: " + projectDirectory1);
 
 		// method 2
 		String projectDirectory2 = Paths.get("").toAbsolutePath().toString();
-		System.out.println(
-				"FileIOPractice -> getCurrentDirectory() -> projectDirectory2: " + projectDirectory2);
+		System.out.println("FileIOPractice -> getCurrentDirectory() -> projectDirectory2: " + projectDirectory2);
 
 		// method 3
 		String projectDirectory3 = Paths.get(".").toAbsolutePath().normalize().toString();
-		System.out.println(
-				"FileIOPractice -> getCurrentDirectory() -> projectDirectory3: " + projectDirectory3);
+		System.out.println("FileIOPractice -> getCurrentDirectory() -> projectDirectory3: " + projectDirectory3);
 
 		// method 4
 		URL projectDirectory4 = getClass().getProtectionDomain().getCodeSource().getLocation();
-		System.out.println(
-				"FileIOPractice -> getCurrentDirectory() -> projectDirectory4: " + projectDirectory4);
+		System.out.println("FileIOPractice -> getCurrentDirectory() -> projectDirectory4: " + projectDirectory4);
 
 		// method 5
-		String myCurrentDir = System.getProperty("user.dir") + File.separator
-				+ System.getProperty("sun.java.command")
-						.substring(0, System.getProperty("sun.java.command").lastIndexOf("."))
-						.replace(".", File.separator);
+		String myCurrentDir = System.getProperty("user.dir") + File.separator + System.getProperty("sun.java.command")
+				.substring(0, System.getProperty("sun.java.command").lastIndexOf(".")).replace(".", File.separator);
 		System.out.println("FileIOPractice -> getCurrentDirectory() -> myCurrentDir: " + myCurrentDir);
 	}
 

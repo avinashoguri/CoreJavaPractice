@@ -2,12 +2,15 @@ package core.java;
 
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.StringTokenizer;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import org.junit.Ignore;
 import org.junit.Test;
@@ -198,7 +201,7 @@ public class StringPractice {
 	}
 
 	@Test
-	public void test() {
+	public void removeSplCharsAndPrintEachWord() {
 		String s = "He is a very very good boy, isn't he?";
 		s = s.replaceAll("!", " ");
 		System.out.println(s);
@@ -241,6 +244,42 @@ public class StringPractice {
 
 		Collections.sort(strList, lengthComparator);
 		System.out.println("sort by length: " + strList);
+	}
+
+	/**
+	 * Output:
+	 * 
+	 * C:\output-2018-02-15T16-20-19.002.txt
+	 */
+	@Test
+	public void replaceAll() {
+		String filePathWithName = "C:\\output-" + LocalDateTime.now().toString().replaceAll(":", "-") + ".txt";
+
+		System.out.println(filePathWithName);
+	}
+
+	/**
+	 * Output: 
+	 * 
+	 * Hello welcome to java String practice examples. Have Fun 
+	 * Hello welcome to java String practice examples. Have Fun
+	 */
+	@Test
+	public void removeSpacesInString() {
+		String str = "Hello  welcome to  java   String practice  examples.   Have Fun";
+
+		// using for each
+		String[] words = str.split(" ");
+		StringBuffer sentence = new StringBuffer();
+		Stream.of(words).forEach(word -> {
+			if (!word.trim().isEmpty())
+				sentence.append(word).append(" ");
+		});
+		System.out.println(sentence);
+
+		// using JDK 8
+		String sentence2 = Stream.of(words).filter(word -> !word.trim().isEmpty()).collect(Collectors.joining(" "));
+		System.out.println(sentence2);
 	}
 
 }

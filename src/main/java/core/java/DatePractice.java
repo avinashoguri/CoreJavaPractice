@@ -283,28 +283,32 @@ public class DatePractice {
 
 		Date convertedDate1 = simpleDateFormat1.parse(date1);
 		System.out.println("convertedDate1: " + convertedDate1);
-		System.out.println("simpleDateFormat1.format(convertedDate1): " + simpleDateFormat1.format(convertedDate1));
+		System.out.println(
+				"simpleDateFormat1.format(convertedDate1): " + simpleDateFormat1.format(convertedDate1));
 
 		// 20/07/2017
 		SimpleDateFormat simpleDateFormat2 = new SimpleDateFormat("dd/MM/yyyy");
 		String date2 = "20/07/2017";
 		Date convertedDate2 = simpleDateFormat2.parse(date2);
 		System.out.println("convertedDate2: " + convertedDate2);
-		System.out.println("simpleDateFormat2.format(convertedDate2): " + simpleDateFormat2.format(convertedDate2));
+		System.out.println(
+				"simpleDateFormat2.format(convertedDate2): " + simpleDateFormat2.format(convertedDate2));
 
 		//Thu, July 20 2017
 		SimpleDateFormat simpleDateFormat3 = new SimpleDateFormat("E, MMM dd yyyy");
 		String date3 = "Thu, July 20 2017";
 		Date convertedDate3 = simpleDateFormat3.parse(date3);
 		System.out.println("convertedDate3: " + convertedDate3);
-		System.out.println("simpleDateFormat3.format(convertedDate3): " + simpleDateFormat3.format(convertedDate3));
+		System.out.println(
+				"simpleDateFormat3.format(convertedDate3): " + simpleDateFormat3.format(convertedDate3));
 
 		//Thursday, July 10 2017 12:10:08 PM
 		SimpleDateFormat simpleDateFormat4 = new SimpleDateFormat("EEEE, MMM dd yyyy HH:mm:ss a");
 		String date4 = "Thursday, July 20 2017 12:10:08 PM";
 		Date convertedDate4 = simpleDateFormat4.parse(date4);
 		System.out.println("convertedDate4: " + convertedDate4);
-		System.out.println("simpleDateFormat4.format(convertedDate4): " + simpleDateFormat4.format(convertedDate4));
+		System.out.println(
+				"simpleDateFormat4.format(convertedDate4): " + simpleDateFormat4.format(convertedDate4));
 
 		// Sun Apr 16 22:52:16 EDT 2017
 		SimpleDateFormat simpleDateFormat5 = new SimpleDateFormat("E MMM dd HH:mm:ss Z yyyy");
@@ -312,7 +316,8 @@ public class DatePractice {
 		String date5 = "Sun Apr 16 22:52:16 EDT 2017";
 		Date convertedDate5 = simpleDateFormat5.parse(date5);
 		System.out.println("convertedDate5: " + convertedDate5);
-		System.out.println("simpleDateFormat5.format(convertedDate5): " + simpleDateFormat5.format(convertedDate5));
+		System.out.println(
+				"simpleDateFormat5.format(convertedDate5): " + simpleDateFormat5.format(convertedDate5));
 	}
 
 	/**
@@ -441,7 +446,8 @@ public class DatePractice {
 		LocalDate today = LocalDate.now(Clock.systemDefaultZone());
 		boolean isPast = localDate.isBefore(today);
 		boolean isFuture = localDate.isAfter(today);
-		System.out.println("inputDate: " + localDate + ", today: " + today + ", isPast: " + isPast + ", isFuture: " + isFuture);
+		System.out.println("inputDate: " + localDate + ", today: " + today + ", isPast: " + isPast
+				+ ", isFuture: " + isFuture);
 
 		// method 2
 		String inputDate2 = "20190814";
@@ -450,8 +456,8 @@ public class DatePractice {
 		LocalDate today2 = LocalDate.now(Clock.systemDefaultZone());
 		boolean isPast2 = localDate2.isBefore(today2);
 		boolean isFuture2 = localDate2.isAfter(today2);
-		System.out.println(
-				"inputDate2: " + localDate2 + ", today2: " + today2 + ", isPast2: " + isPast2 + ", isFuture: " + isFuture2);
+		System.out.println("inputDate2: " + localDate2 + ", today2: " + today2 + ", isPast2: " + isPast2
+				+ ", isFuture: " + isFuture2);
 	}
 
 	@Test
@@ -498,12 +504,14 @@ public class DatePractice {
 		// MMM-yy
 		LocalDate localDate = LocalDate.now(Clock.systemDefaultZone());
 		DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("MMM-yy");
-		System.out.println("localDate: " + localDate + ", convertedDate: " + dateTimeFormatter.format(localDate));
+		System.out.println(
+				"localDate: " + localDate + ", convertedDate: " + dateTimeFormatter.format(localDate));
 
 		// dd-MM-yy
 		LocalDate localDate2 = LocalDate.now(Clock.systemDefaultZone());
 		DateTimeFormatter dateTimeFormatter2 = DateTimeFormatter.ofPattern("dd-MMM-yy");
-		System.out.println("localDate: " + localDate2 + ", convertedDate: " + dateTimeFormatter2.format(localDate2));
+		System.out.println(
+				"localDate: " + localDate2 + ", convertedDate: " + dateTimeFormatter2.format(localDate2));
 	}
 
 	@Test
@@ -563,20 +571,22 @@ public class DatePractice {
 	@Test
 	public void getYearBaseValue() {
 		LocalDate localDate = LocalDate.now(Clock.systemDefaultZone());
-		System.out.println("date: " + localDate.getDayOfMonth() + ", month: " + localDate.getMonthValue() + ", year: "
-				+ localDate.getYear() + ", dayOfYear: " + localDate.getDayOfYear() + ", weekOfTheYear: "
-				+ localDate.get(WeekFields.of(Locale.ENGLISH).weekOfWeekBasedYear()) + ", weekOfTheMonth: "
-				+ localDate.get(WeekFields.of(Locale.ENGLISH).weekOfMonth()));
+		System.out.println("date: " + localDate.getDayOfMonth() + ", month: " + localDate.getMonthValue()
+				+ ", year: " + localDate.getYear() + ", dayOfYear: " + localDate.getDayOfYear()
+				+ ", weekOfTheYear: " + localDate.get(WeekFields.of(Locale.ENGLISH).weekOfWeekBasedYear())
+				+ ", weekOfTheMonth: " + localDate.get(WeekFields.of(Locale.ENGLISH).weekOfMonth()));
 
 		ZoneId zoneId = ZoneId.systemDefault();
 		Date date = Date.from(localDate.atStartOfDay(zoneId).toInstant());
 		Calendar calendar = Calendar.getInstance();
 		calendar.setTime(date);
 
-		System.out.println("date: " + calendar.get(Calendar.DATE) + ", month: " + (calendar.get(Calendar.MONTH) + 1) + ", year: "
-				+ calendar.get(Calendar.YEAR) + ", dayOfTheYear: " + calendar.get(Calendar.DAY_OF_YEAR) + ", weekOfTheYear: "
-				+ calendar.get(Calendar.WEEK_OF_YEAR) + ", monthOfTheYear: " + (calendar.get(Calendar.MONTH) + 1)
-				+ ", weekOfTheMonth: " + calendar.get(Calendar.DAY_OF_WEEK_IN_MONTH));
+		System.out.println("date: " + calendar.get(Calendar.DATE) + ", month: "
+				+ (calendar.get(Calendar.MONTH) + 1) + ", year: " + calendar.get(Calendar.YEAR)
+				+ ", dayOfTheYear: " + calendar.get(Calendar.DAY_OF_YEAR) + ", weekOfTheYear: "
+				+ calendar.get(Calendar.WEEK_OF_YEAR) + ", monthOfTheYear: "
+				+ (calendar.get(Calendar.MONTH) + 1) + ", weekOfTheMonth: "
+				+ calendar.get(Calendar.DAY_OF_WEEK_IN_MONTH));
 	}
 
 	@Test
@@ -624,7 +634,8 @@ public class DatePractice {
 		System.out.println("monthFirstDate: " + monthFirstDate + ", monthLastDate: " + monthLastDate);
 
 		for (; monthFirstDate.isBefore(monthLastDate); monthFirstDate = monthFirstDate.plusDays(1)) {
-			if (day.equalsIgnoreCase(monthFirstDate.getDayOfWeek().getDisplayName(TextStyle.FULL, Locale.ENGLISH))) {
+			if (day.equalsIgnoreCase(
+					monthFirstDate.getDayOfWeek().getDisplayName(TextStyle.FULL, Locale.ENGLISH))) {
 				dates.add(monthFirstDate.toString());
 			}
 		}
@@ -651,7 +662,8 @@ public class DatePractice {
 		// check period between dates
 		Period period = Period.between(oldDate, newDate);
 
-		System.out.println(period.getYears() + " years," + period.getMonths() + " months," + period.getDays() + " days");
+		System.out.println(
+				period.getYears() + " years," + period.getMonths() + " months," + period.getDays() + " days");
 	}
 
 	@Test
@@ -724,7 +736,8 @@ public class DatePractice {
 
 	@Test
 	public void formatDateTimeBasedOnLocale() {
-		DateFormat dateTimeFormat = DateFormat.getDateTimeInstance(DateFormat.FULL, DateFormat.DEFAULT, new Locale("en", "US"));
+		DateFormat dateTimeFormat = DateFormat.getDateTimeInstance(DateFormat.FULL, DateFormat.DEFAULT,
+				new Locale("en", "US"));
 		String dateTime = dateTimeFormat.format(new Date());
 		System.out.println(dateTime); // Sunday, January 7, 2018 12:26:44 PM
 	}
@@ -732,8 +745,8 @@ public class DatePractice {
 	@Test
 	public void formatDaysUsingDateFormatSymbols() {
 		DateFormatSymbols dateFormatSymbols = new DateFormatSymbols(new Locale("da", "DK"));
-		dateFormatSymbols.setWeekdays(new String[] { "unused", "1-sunday", "2-monday", "3-tuesday", "4-wednesday", "5-thursday",
-				"6-friday", "7-saturday" });
+		dateFormatSymbols.setWeekdays(new String[] { "unused", "1-sunday", "2-monday", "3-tuesday",
+				"4-wednesday", "5-thursday", "6-friday", "7-saturday" });
 		String pattern = "EEEE MMMM yyyy";
 		SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern, dateFormatSymbols);
 
@@ -751,12 +764,20 @@ public class DatePractice {
 		String julyName = Month.of(7).name();
 		System.out.println("julyName: " + julyName);
 
-		// method 3 - from JDK 8 using CHINESE Locale
+		/*
+		 * method 3 - from JDK 8 using CHINESE Locale
+		 * To see Chinese in console
+		 * Right click - Debug Configurations - common tab - Encoding - Other - UTF-8
+		 */
 		String mayName = Month.of(5).getDisplayName(TextStyle.SHORT, Locale.CHINESE);
 		System.out.println("mayName: " + mayName);
 
 		// FRENCH Locale
 		String septemberName = Month.of(9).getDisplayName(TextStyle.FULL, Locale.FRENCH);
 		System.out.println("septemberName: " + septemberName);
+
+		// English Locale
+		String decemberName = Month.of(12).getDisplayName(TextStyle.FULL, Locale.ENGLISH);
+		System.out.println("DecemberName: " + decemberName);
 	}
 }

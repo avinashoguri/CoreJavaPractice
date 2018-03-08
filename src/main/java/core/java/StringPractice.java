@@ -282,4 +282,15 @@ public class StringPractice {
 		System.out.println(sentence2);
 	}
 
+	@Test
+	public void formatStringWithSpaces() {
+		List<String> strings = Arrays.asList("java 100", "cpp 65", "python 50");
+
+		for (String str : strings) {
+			String[] strs = str.split(" ");
+			String s1 = strs[0];
+			int number = Integer.parseInt(strs[1]);
+			System.out.printf("%-15s%03d\n", s1, number);
+		}
+	}
 }
